@@ -1,0 +1,147 @@
+.container {
+    padding-top: 150px;
+    min-height: 100vh;
+    padding-bottom: 4rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.title {
+    font-family: var(--font-heading);
+    color: var(--color-gold);
+    text-align: center;
+    margin-bottom: 3rem;
+    font-size: 2.5rem;
+}
+
+.searchBox {
+    background: var(--color-surface);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 3rem;
+}
+
+.input {
+    flex: 1;
+    background: #000;
+    border: 1px solid #333;
+    color: #fff;
+    padding: 1rem;
+    border-radius: 4px;
+}
+
+.btn {
+    background: var(--color-gold);
+    color: #000;
+    border: none;
+    padding: 0 2rem;
+    font-weight: bold;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+.result {
+    background: var(--color-surface);
+    padding: 2.5rem;
+    border-radius: var(--border-radius);
+    border: 1px solid var(--color-gold);
+    animation: fadeIn 0.5s ease;
+}
+
+.orderHeader {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 1rem;
+}
+
+.label {
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+    display: block;
+}
+
+.value {
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+/* Stepper */
+.stepper {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 3rem;
+    position: relative;
+}
+
+.stepper::before {
+    content: '';
+    position: absolute;
+    top: 15px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: #333;
+    z-index: 0;
+}
+
+.step {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    flex: 1;
+}
+
+.dot {
+    width: 32px;
+    height: 32px;
+    background: #000;
+    border: 2px solid #666;
+    border-radius: 50%;
+    margin: 0 auto 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #666;
+    font-weight: bold;
+    transition: all 0.3s;
+}
+
+.step.active .dot {
+    background: var(--color-gold);
+    border-color: var(--color-gold);
+    color: #000;
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+}
+
+.step.completed .dot {
+    background: var(--color-gold);
+    border-color: var(--color-gold);
+    content: '✓';
+}
+
+.stepText {
+    color: #666;
+    font-size: 0.85rem;
+}
+
+.step.active .stepText {
+    color: #fff;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

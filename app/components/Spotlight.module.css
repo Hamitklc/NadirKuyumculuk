@@ -1,0 +1,61 @@
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 9999;
+    pointer-events: none;
+    /* Allows clicking through */
+    mix-blend-mode: hard-light;
+    /* Creates a nice dramatic lighting effect */
+    background: radial-gradient(circle at var(--x) var(--y),
+            transparent 100px,
+            rgba(0, 0, 0, 0.98) 300px);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    visibility: hidden;
+}
+
+.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.hint {
+    position: fixed;
+    bottom: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #fff;
+    font-family: var(--font-heading);
+    text-align: center;
+    opacity: 0.7;
+    pointer-events: none;
+    z-index: 10000;
+    transition: opacity 0.3s;
+}
+
+.active .hint {
+    animation: fadeOutHint 4s forwards;
+}
+
+@keyframes fadeOutHint {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, 20px);
+    }
+
+    20% {
+        opacity: 1;
+        transform: translate(-50%, 0);
+    }
+
+    80% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
