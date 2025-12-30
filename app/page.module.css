@@ -376,3 +376,132 @@
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
+
+/* Mobile Responsiveness */
+@media (max-width: 900px) {
+  .hero {
+    min-height: 100vh;
+    height: auto;
+    padding-top: 6rem;
+    /* Space for fixed navbar */
+    align-items: flex-start;
+  }
+
+  .heroContent {
+    flex-direction: column-reverse;
+    padding: 2rem 1.5rem;
+    gap: 3rem;
+  }
+
+  .glassCard {
+    width: 100%;
+    padding: 2.5rem;
+    text-align: center;
+  }
+
+  .heroTitle {
+    font-size: 3rem;
+  }
+
+  .heroSubtitle {
+    text-align: center;
+    margin: 0 auto 2rem auto;
+  }
+
+  /* Align buttons in hero center on mobile */
+  .heroContent .reveal-text:last-child {
+    justify-content: center !important;
+    flex-wrap: wrap;
+  }
+
+  .heroVisual {
+    width: 100%;
+    height: 300px;
+    justify-content: center;
+    perspective: none;
+    /* Simplify on mobile */
+    margin-bottom: 2rem;
+  }
+
+  .floatingProduct {
+    width: 250px;
+    height: 250px;
+    animation: none;
+    /* Disable complex entry animation on mobile for performance */
+    transform: none !important;
+    /* Disable mouse 3d effect */
+  }
+
+  .collection,
+  .gallery,
+  .about,
+  .newsletter {
+    padding: 4rem 0;
+  }
+
+  .galleryGrid {
+    grid-template-columns: 1fr;
+    /* Single column gallery */
+    grid-template-rows: auto;
+  }
+
+  .galleryItem:nth-child(1),
+  .galleryItem:nth-child(2) {
+    grid-column: span 1;
+    grid-row: span 1;
+    height: 300px;
+  }
+
+  .galleryItem {
+    height: 300px;
+  }
+
+  .featuredBanner {
+    flex-direction: column;
+    height: auto;
+    text-align: center;
+  }
+
+  .bannerContent {
+    padding: 3rem 1.5rem;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    /* Ensure text readability over image */
+    max-width: 100%;
+  }
+
+  .sectionTitle {
+    font-size: 2.2rem;
+  }
+
+  .productGrid {
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .newsletterForm {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .newsletterInput {
+    width: 100%;
+  }
+
+  .trustBadges {
+    padding: 3rem 0;
+    gap: 2rem;
+  }
+
+  .badgeItem {
+    min-width: 45%;
+    /* 2 per row */
+  }
+}
+
+@media (max-width: 480px) {
+  .badgeItem {
+    min-width: 100%;
+    /* 1 per row on very small screens */
+  }
+}

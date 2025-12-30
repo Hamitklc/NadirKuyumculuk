@@ -56,6 +56,13 @@
     /* Important for Link */
 }
 
+@media (max-width: 768px) {
+    .imageContainer {
+        height: 300px;
+        /* Smaller cards on mobile */
+    }
+}
+
 .image {
     object-fit: cover;
     transition: transform 0.5s ease;

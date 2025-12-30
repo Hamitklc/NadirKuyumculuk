@@ -98,3 +98,19 @@
     cursor: pointer;
     text-decoration: underline;
 }
+
+@media (max-width: 600px) {
+    .modal {
+        width: 95%;
+        padding: 2rem 1.5rem;
+    }
+
+    .options {
+        grid-template-columns: 1fr;
+        /* Stack options vertically */
+    }
+
+    .stepTitle {
+        font-size: 1.5rem;
+    }
+}

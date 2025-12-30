@@ -5,6 +5,7 @@ export interface Product {
     price: number;
     formattedPrice: string;
     image: string;
+    images: string[];
     category: string;
     description: string;
 }
@@ -17,6 +18,7 @@ export const products: Product[] = [
         price: 45000,
         formattedPrice: "45.000 TL",
         image: "/images/product1.png",
+        images: ["/images/product1.png", "/images/product1_side.png", "/images/product1_hand.png", "/images/product1_box.png"],
         category: "Yüzük",
         description: "0.50 karat F renk pırlanta ve 18 ayar altın montürün eşsiz uyumu. Özel anlarınız için tasarlandı."
     },
@@ -27,6 +29,7 @@ export const products: Product[] = [
         price: 120000,
         formattedPrice: "120.000 TL",
         image: "/images/product2.png",
+        images: ["/images/product2.png", "/images/product2_closeup.png", "/images/product2_model.png", "/images/product2_case.png"],
         category: "Gerdanlık",
         description: "Kolombiya zümrüdü ve yanlarında sıralanmış markiz kesim pırlantalarla hazırlanan asil bir tasarım."
     },
@@ -37,6 +40,7 @@ export const products: Product[] = [
         price: 25000,
         formattedPrice: "25.000 TL",
         image: "/images/product3.png",
+        images: ["/images/product3.png", "/images/product3.png", "/images/product3.png", "/images/product3.png"],
         category: "Bileklik",
         description: "Günlük kullanıma uygun, zarif ve modern altın zincir bileklik tasarımı."
     },
@@ -47,6 +51,7 @@ export const products: Product[] = [
         price: 35000,
         formattedPrice: "35.000 TL",
         image: "/images/product4.png",
+        images: ["/images/product4.png", "/images/product4.png", "/images/product4.png", "/images/product4.png"],
         category: "Küpe",
         description: "Göz alıcı parlaklığıyla her anınıza ışıltı katan 0.50 karat pırlanta küpeler."
     },
@@ -57,6 +62,7 @@ export const products: Product[] = [
         price: 250000,
         formattedPrice: "250.000 TL",
         image: "/images/product5.png",
+        images: ["/images/product5.png", "/images/product5.png", "/images/product5.png", "/images/product5.png"],
         category: "Saat",
         description: "İsviçre mekanizmalı, safir camlı ve 18 ayar altın kaplama lüks kol saati."
     },
@@ -67,6 +73,7 @@ export const products: Product[] = [
         price: 55000,
         formattedPrice: "55.000 TL",
         image: "/images/product1.png",
+        images: ["/images/product1.png", "/images/product1_side.png", "/images/product1_hand.png", "/images/product1_box.png"],
         category: "Yüzük",
         description: "Modern baget kesim pırlantaların eşsiz uyumuyla tasarlanmış özel koleksiyon parçası."
     },
@@ -77,6 +84,7 @@ export const products: Product[] = [
         price: 180000,
         formattedPrice: "180.000 TL",
         image: "/images/product2.png",
+        images: ["/images/product2.png", "/images/product2_closeup.png", "/images/product2_model.png", "/images/product2_case.png"],
         category: "Gerdanlık",
         description: "Derin mavi safir taşlarının pırlanta ile dansı. Özel geceleriniz için tasarlandı."
     },
@@ -87,6 +95,7 @@ export const products: Product[] = [
         price: 42000,
         formattedPrice: "42.000 TL",
         image: "/images/product3.png",
+        images: ["/images/product3.png", "/images/product3.png", "/images/product3.png", "/images/product3.png"],
         category: "Bileklik",
         description: "İtalyan işçiliği ile şekillendirilmiş, modern ve iddialı altın kelepçe."
     }

@@ -264,3 +264,33 @@ section {
   animation: diamond-sparkle var(--duration) linear infinite;
   filter: blur(1px);
 }
+
+
+@media (max-width: 768px) {
+  html {
+    font-size: 14px;
+    /* Slightly smaller base font on mobile */
+  }
+
+  /* Utilities overrides for mobile */
+  .container {
+    padding: 0 1.5rem;
+  }
+
+  section {
+    padding: 4rem 0;
+    /* Reduce vertical padding on mobile */
+  }
+
+  h1 {
+    font-size: 2.5rem;
+  }
+
+  h2 {
+    font-size: 2rem;
+  }
+
+  h3 {
+    font-size: 1.5rem;
+  }
+}

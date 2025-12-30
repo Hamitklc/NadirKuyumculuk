@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import styles from './GiftWizard.module.css';
 import { products } from '../lib/products';
 import Image from 'next/image';
@@ -11,6 +12,12 @@ export default function GiftWizard() {
     const [step, setStep] = useState(0);
     const [answers, setAnswers] = useState<string[]>([]);
     const [resultId, setResultId] = useState<number | null>(null);
+    const [mounted, setMounted] = useState(false);
+
+    useEffect(() => {
+        setMounted(true);
+        return () => setMounted(false);
+    }, []);
 
     const questions = [
         {
@@ -60,46 +67,49 @@ export default function GiftWizard() {
 
     const product = resultId ? products.find(p => p.id === resultId) : null;
 
+    const modalContent = (
+        <div className={`${styles.overlay} ${isOpen ? styles.open : ''}`}>
+            <div className={styles.modal}>
+                <button onClick={() => setIsOpen(false)} className={styles.closeBtn}>&times;</button>
+
+                {step < questions.length ? (
+                    <>
+                        <h3 className={styles.stepTitle}>{questions[step].title}</h3>
+                        <div className={styles.options}>
+                            {questions[step].options.map((opt) => (
+                                <button key={opt} onClick={() => handleOption(opt)} className={styles.optionBtn}>
+                                    {opt}
+                                </button>
+                            ))}
+                        </div>
+                        <div style={{ color: '#666' }}>Adım {step + 1} / {questions.length}</div>
+                    </>
+                ) : product ? (
+                    <div className="fade-in">
+                        <h3 className={styles.stepTitle}>Sizin İçin Seçtik</h3>
+                        <div className={styles.resultImage}>
+                            <Image src={product.image} alt={product.name} fill style={{ objectFit: 'cover' }} />
+                        </div>
+                        <h4 style={{ color: '#fff', fontSize: '1.5rem', marginBottom: '0.5rem' }}>{product.name}</h4>
+                        <p style={{ color: 'var(--color-gold)', marginBottom: '1.5rem', fontSize: '1.2rem' }}>{product.formattedPrice}</p>
+
+                        <Link href={`/product/${product.id}`} className="btn" onClick={() => setIsOpen(false)}>
+                            Ürünü İncele
+                        </Link>
+                        <br />
+                        <button onClick={reset} className={styles.restartBtn}>Baştan Başla</button>
+                    </div>
+                ) : null}
+            </div>
+        </div>
+    );
+
     return (
         <>
             <button onClick={() => setIsOpen(true)} className="btn-outline" style={{ marginLeft: '1rem' }}>
                 🎁 Hediye Sihirbazı
             </button>
-
-            <div className={`${styles.overlay} ${isOpen ? styles.open : ''}`}>
-                <div className={styles.modal}>
-                    <button onClick={() => setIsOpen(false)} className={styles.closeBtn}>&times;</button>
-
-                    {step < questions.length ? (
-                        <>
-                            <h3 className={styles.stepTitle}>{questions[step].title}</h3>
-                            <div className={styles.options}>
-                                {questions[step].options.map((opt) => (
-                                    <button key={opt} onClick={() => handleOption(opt)} className={styles.optionBtn}>
-                                        {opt}
-                                    </button>
-                                ))}
-                            </div>
-                            <div style={{ color: '#666' }}>Adım {step + 1} / {questions.length}</div>
-                        </>
-                    ) : product ? (
-                        <div className="fade-in">
-                            <h3 className={styles.stepTitle}>Sizin İçin Seçtik</h3>
-                            <div className={styles.resultImage}>
-                                <Image src={product.image} alt={product.name} fill style={{ objectFit: 'cover' }} />
-                            </div>
-                            <h4 style={{ color: '#fff', fontSize: '1.5rem', marginBottom: '0.5rem' }}>{product.name}</h4>
-                            <p style={{ color: 'var(--color-gold)', marginBottom: '1.5rem', fontSize: '1.2rem' }}>{product.formattedPrice}</p>
-
-                            <Link href={`/product/${product.id}`} className="btn">
-                                Ürünü İncele
-                            </Link>
-                            <br />
-                            <button onClick={reset} className={styles.restartBtn}>Baştan Başla</button>
-                        </div>
-                    ) : null}
-                </div>
-            </div>
+            {mounted && createPortal(modalContent, document.body)}
         </>
     );
 }
