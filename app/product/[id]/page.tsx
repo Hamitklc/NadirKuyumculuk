@@ -56,7 +56,7 @@ export default function ProductPage({ params }: { params: Promise<{ id: string }
                         {/* Thumbnail Gallery */}
                         {product.images && product.images.length > 1 && (
                             <div className={styles.gallery}>
-                                {product.images.map((img, index) => (
+                                {product.images.map((img: string, index: number) => (
                                     <button
                                         key={index}
                                         className={`${styles.thumbnail} ${selectedImage === img ? styles.activeThumbnail : ''}`}
